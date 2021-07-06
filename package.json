@@ -1,17 +1,17 @@
 {
   "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-session": "^1.17.2",
     "nodemon": "^2.0.9"
   },
   "name": "consumoapis",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js app.js"
+    "start": "nodemon -e js src/app.js"
   },
   "repository": {
     "type": "git",

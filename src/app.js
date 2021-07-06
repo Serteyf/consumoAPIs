@@ -1,20 +1,30 @@
+// Express
 const express = require('express');
-const session = require('express-session');
-
 const app = express();
+// CORS
+const cors = require("cors");
+app.use(cors('*'));
 
+// Seteo EJS como el template engine
 app.set("view engine", "ejs");
 app.set("views", [__dirname + "/views",]);
 
+// Seteo la carpeta public como estatica (js y css)
 app.use(express.static('public'));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(session({ secret: "Mensaje secreto" }));
 
+// Routes
+const mainRouter = require("./routes/mainRouter");
+
+// Servidor levantado en puerto 3000 (http://localhost:3000)
 app.listen(3000, () => {
     console.log("Server running on port 3000.");
 });
 
-app.get('/', (req, res) => {
+// Renderizo la vista principal
+app.use("/", (req, res) => {
     res.render('index')
 });
+
