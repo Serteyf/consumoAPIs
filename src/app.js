@@ -1,6 +1,7 @@
 // Express
 const express = require('express');
 const app = express();
+
 // CORS
 const cors = require("cors");
 app.use(cors('*'));
@@ -16,7 +17,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Routes
-const mainRouter = require("./routes/mainRouter");
+const APIRouter = require("./routes/APIRouter");
+
+// Declare locals
+app.locals.data = {};
 
 // Servidor levantado en puerto 3000 (http://localhost:3000)
 app.listen(3000, () => {
@@ -27,4 +31,7 @@ app.listen(3000, () => {
 app.use("/", (req, res) => {
     res.render('index')
 });
+
+// Endpoints de APIs
+app.use("/api", APIRouter);
 
