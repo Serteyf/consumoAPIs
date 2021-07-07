@@ -5,8 +5,6 @@ const faceAndFaceUrl = 'https://sandbox-api.lodot.cl/v2/face-and-face';
 const codeReaderURl = 'https://sandbox-api.lodot.cl/v3/code-reader';
 
 const docForm = document.getElementById('doc-form');
-const frontForm = document.getElementById('front-form');
-const backForm = document.getElementById('back-form');
 const autocaptureFrontDiv = document.querySelector('.autocapture-front');
 const autocaptureBackDiv = document.querySelector('.autocapture-back');
 const livenessDiv = document.querySelector('.liveness')
@@ -15,6 +13,7 @@ const livenessID = getSessionID({ apiKey: 'API_KEY', liveness: true, mode: 1, au
 let ct1;
 let ct2;
 let sd;
+
 
 function getSessionID(params){
   let sessionId;
@@ -58,28 +57,24 @@ window.addEventListener('load',async () => {
     const selectedDoc = document.querySelector('#doc-select').value;
     return sd = selectedDoc;
   });
-  frontForm.addEventListener('submit', (e) => {
-    autocapture(autocaptureFrontDiv, {
-      locale: "es",
-      session_id: autoCaptureID,
-      document_type: sd,
-      document_side: "front",
-      callback: function(captured_token1, image1){ return ct1 = captured_token1; },
-      failure: function(error){ alert(error); e.preventDefault();} }
-    );
-  })
+  autocapture(autocaptureFrontDiv, {
+    locale: "es",
+    session_id: autoCaptureID,
+    document_type: sd,
+    document_side: "front",
+    callback: function(captured_token1, image1){ return ct1 = captured_token1; },
+    failure: function(error){ alert(error); e.preventDefault();} }
+  );
   autocaptureFrontDiv.innerHTML = '';
 
-  backForm.addEventListener('submit', (e) => {
-    autocapture(autocaptureBackDiv, {
-      locale: "es",
-      session_id: autoCaptureID,
-      document_type: sd,
-      document_side: "back",
-      callback: function(captured_token2, image2){ return ct2 = captured_token2 },
-      failure: function(error){ alert(error); e.preventDefault(); } }
-    );
-  })
+  autocapture(autocaptureBackDiv, {
+    locale: "es",
+    session_id: autoCaptureID,
+    document_type: sd,
+    document_side: "back",
+    callback: function(captured_token2, image2){ return token },
+    failure: function(error){ alert(error);} 
+  });
   autocaptureBackDiv.innerHTML = '';
 
   const info = getCodeReaderData(ct1, ct2, sd).information_from_document;
