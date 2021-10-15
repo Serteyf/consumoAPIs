@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/webcam.js" defer></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Prueba de vida</title>
+</head>
+<body>
+    <h2>Seguí los movimientos de la máscara</h2>
+    <div class='liveness-img'>
+        <video autoplay="true" id="videoElement">
+	
+	    </video>
+    </div>
+
+    <form id='liveness-form' action="get">
+        <div class='liveness-div'></div>
+        <button type="submit" id='liveness-button'>
+            <a href="/verificacion">Aceptar</a>
+        </button>
+    </form>
+</body>
+</html>

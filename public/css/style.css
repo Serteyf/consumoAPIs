@@ -1,3 +1,27 @@
-#autocapture-div #liveness-div{
-    width: 50vw;
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    text-align: -webkit-center
+}
+#doc-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+#doc-form > * {
+    margin: 5px 0;
+}
+button{
+    width: 20%;
+    align-self: center;;
+}
+.result img {
+    width: 50%
+}
+.ok img {
+    width: 10%
 }

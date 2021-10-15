@@ -100,7 +100,7 @@ window.addEventListener('load', () => {
           body: JSON.stringify({livenessToken: token, autocaptureToken: ct1, selectedDoc: sd})
         })
       },
-      failure: function(error){ e.preventDefault(); }
+      failure: function(error){ alert(error); e.preventDefault(); }
 
     });
 

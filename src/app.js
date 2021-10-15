@@ -1,37 +1,35 @@
 // Express
 const express = require('express');
 const app = express();
+const PORT = 3000;
 
 // CORS
 const cors = require("cors");
 app.use(cors('*'));
 
-// Seteo EJS como el template engine
-app.set("view engine", "ejs");
-app.set("views", [__dirname + "/views",]);
+// app.set("views", [__dirname + "/views",]);
 
-// Seteo la carpeta public como estatica (js y css)
+// Seteo la carpeta public como estatica (image, js y css)
 app.use(express.static('public'));
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Routes
-const APIRouter = require("./routes/APIRouter");
-
-// Declare locals
-app.locals.data = {};
-
-// Servidor levantado en puerto 3000 (http://localhost:3000)
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server running on port 3000.");
 });
 
-// Renderizo la vista principal
-app.use("/", (req, res) => {
-    res.render('index')
+// Routes
+const APIRouter = require("./routes/APIRouter.js");
+const mainRouter = require("./routes/mainRouter.js")
+
+
+app.use("/", mainRouter);
+app.use("/api", APIRouter);
+
+app.use((req, res, next) => {
+    res.status(404).send("not-found");
+    next();
 });
 
-// Endpoints de APIs
-app.use("/api", APIRouter);
+
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+
+    <title>Elegí tu documento</title>
+</head>
+<body>
+    <div>
+        <h2>Elige un documento según tu país</h2>
+    </div>
+    <div>
+        <form id='doc-form' action="post">
+            <label for="doc-select">Elige tu documento</label>
+            <select id="doc-select" name="doc-select">
+                <option value="CHL1">Documento de identidad chileno antiguo</option>
+                <option value="CHL2">Documento de identidad chileno nuevo</option>
+                <option value="PER1">Documento de identidad peruano antiguo azul</option>
+                <option value="PER2">Documento de identidad peruano blanco (con chip contact a la vista)</option>
+                <option value="PER3">Carné de extranjería peruano</option>
+                <option value="PER4">Permiso temporal de permanencia (PTP) peruano</option>
+                <option value="PER5">Documento de identidad peruano nuevo (con NFC, año 2020)</option>
+                <option value="ARG1">Documento de identidad argentino antiguo</option>
+                <option value="ARG2">Documento de identidad argentino nuevo</option>
+                <option value="MEX1">Documento de identidad mexicano antiguo (IFE)</option>
+                <option value="MEX2">Documento de identidad mexicano (INE)</option>
+                <option value="MEX3">Documento de identidad mexicano nuevo (INE 2020)</option>
+            </select>
+            <button type="submit" id='doc-button'>
+                <a href="/captura-frente">Siguiente</a>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
